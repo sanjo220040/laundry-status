@@ -16,7 +16,7 @@ Web 画面で「使用中 / 使用可」を表示するサンプル。
 
 # Flask: Python だけで簡単に Web サーバ + API を作るためのフレームワーク
 from flask import Flask, jsonify, render_template_string
-
+import os
 # requests: HTTP 通信（Ambient API にアクセスする）
 import requests
 
