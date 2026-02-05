@@ -28,11 +28,15 @@ app = Flask(__name__)
 
 # ===== Ambient 設定 =====
 
-# Ambient のチャネルID（どの計測データを読むかの識別子）
-CHANNEL_ID = 95641
+DEFAULT_CHANNEL_ID = 95641
+CHANNEL_ID = int(os.getenv("AMBIENT_CHANNEL_ID", str(DEFAULT_CHANNEL_ID)))
 
 # Ambient の Read Key（読み取り権限のキー）
-READ_KEY = "451c5d2041675d26"
+# セキュリティのため、コードへ直書きせず環境変数 AMBIENT_READ_KEY から読むのがおすすめです。
+READ_KEY = os.getenv("AMBIENT_READ_KEY", "")
+
+# Ambient API のベースURL（通常はこのままでOK。必要なら AMBIENT_BASE_URL で上書き可能）
+AMBIENT_BASE_URL = os.getenv("AMBIENT_BASE_URL", "http://ambidata.io")
 
 # Ambient のデータ取得 API エンドポイント
 # 例: http://ambidata.io/api/v2/channels/<CHANNEL_ID>/data
